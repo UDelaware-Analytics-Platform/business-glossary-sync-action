@@ -47,8 +47,6 @@ runs:
           --enable-auto-id ${{ inputs.enable_auto_id }} \
           --file ${{ inputs.business_glossary_file }} \
           --prune ${{ inputs.prune }}    
-
-        git status
       env:
         DATAHUB_GMS_HOST: ${{ inputs.datahub_gms_host }}
         DATAHUB_GMS_TOKEN: ${{ inputs.datahub_gms_token }}
