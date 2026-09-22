@@ -36,29 +36,25 @@ runs:
       with:
         python-version: "3.10"
 
-    - name: Paths
+    - name: Debug paths
       shell: bash
-      # pip install -r ${{ github.action_path }}/requirements.txt
       run: |
-        set -x
-        pwd
-        ls -la
-        ls -la ..
-        ls -la ../..
-        
+         echo "github.action_path = ${{ github.action_path }}"
+         echo "GITHUB_ACTION_PATH = $GITHUB_ACTION_PATH"
+         pwd
+         find /__w -type f | grep ".py" | head -100
+
     - name: Sync business glossary
       shell: bash
-      # pip install -r ${{ github.action_path }}/requirements.txt
       run: |
         set -x
-        pwd
-        ls -la
+        pip install -r ${GITHUB_ACTION_PATH}/requirements.txt
 
-        python ${{ github.action_path }}/glossary-sync.py \
+        python ${GITHUB_ACTION_PATH}/glossary-sync.py \
           update-glossary-file \
           --enable-auto-id ${{ inputs.enable_auto_id }} \
           --file ${{ inputs.business_glossary_file }} \
-          --prune ${{ inputs.prune }}
+          --prune ${{ inputs.prune }}    
 
         git status
       env:
