@@ -44,6 +44,7 @@ runs:
         pwd
         ls -la
         ls -la ..
+        ls -la ../..
         
     - name: Sync business glossary
       shell: bash
