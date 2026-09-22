@@ -36,15 +36,7 @@ runs:
       with:
         python-version: "3.10"
 
-    - name: Debug paths
-      shell: bash
-      run: |
-         echo "github.action_path = ${{ github.action_path }}"
-         echo "GITHUB_ACTION_PATH = $GITHUB_ACTION_PATH"
-         pwd
-         find /__w -type f | grep ".py" | head -100
-
-    - name: Sync business glossary
+    - name: Sync business glossary - new path
       shell: bash
       run: |
         set -x
