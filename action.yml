@@ -38,9 +38,11 @@ runs:
 
     - name: Sync business glossary
       shell: bash
+      # pip install -r ${{ github.action_path }}/requirements.txt
       run: |
         set -x
-        pip install -r ${{ github.action_path }}/requirements.txt
+        pwd
+        ls -la
 
         python ${{ github.action_path }}/glossary-sync.py \
           update-glossary-file \
